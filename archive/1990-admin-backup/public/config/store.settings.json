@@ -1,0 +1,48 @@
+{
+  "brandId": "1990",
+  "storeName": "1990",
+  "tagline": "Made For Originals",
+  "theme": {
+    "radius": "0.875rem",
+    "colors": {
+      "background": "#FFFDF9",
+      "foreground": "#1E1E1E",
+      "card": "#FFFFFF",
+      "cardForeground": "#1E1E1E",
+      "popover": "#FFFFFF",
+      "popoverForeground": "#1E1E1E",
+      "primary": "#5E0F1D",
+      "primaryForeground": "#FFFDF9",
+      "secondary": "#F7F3EC",
+      "secondaryForeground": "#5E0F1D",
+      "muted": "#F7F3EC",
+      "mutedForeground": "#777777",
+      "accent": "#F1E5E7",
+      "accentForeground": "#5E0F1D",
+      "destructive": "#B42318",
+      "border": "#ECE7E0",
+      "input": "#E4DDD3",
+      "ring": "#8A2436",
+      "sidebar": "#3B0912",
+      "sidebarForeground": "#F7F3EC",
+      "sidebarPrimary": "#F4D8DD",
+      "sidebarPrimaryForeground": "#5E0F1D",
+      "sidebarAccent": "#5E0F1D",
+      "sidebarAccentForeground": "#FFFDF9",
+      "sidebarBorder": "#6F2230",
+      "sidebarRing": "#E7B7C0"
+    }
+  },
+  "logo": {
+    "src": "/brand-logo.png",
+    "alt": "1990 — Made For Originals",
+    "monogram": "90",
+    "favicon": null
+  },
+  "heroBanner": {
+    "enabled": true,
+    "image": null,
+    "title": "Made For Originals",
+    "subtitle": "Your atelier, commerce and customers in one place"
+  }
+}

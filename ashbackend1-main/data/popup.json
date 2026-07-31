@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "title": "summer sale",
+  "description": "free shipping",
+  "image": "http://localhost:5000/uploads/popup/1781780050097-ChatGPT_Image_Jun_17__2026__05_15_10_PM.png",
+  "buttonText": "",
+  "buttonUrl": "",
+  "showOnce": false,
+  "showEveryVisit": true
+}

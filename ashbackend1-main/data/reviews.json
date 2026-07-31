@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "product_id": 1,
+    "name": "Sarah M.",
+    "rating": 5,
+    "comment": "Amazing scent, lasts all day! My new favorite."
+  },
+  {
+    "id": 2,
+    "product_id": 1,
+    "name": "James K.",
+    "rating": 4,
+    "comment": "Rich and luxurious. A bit strong at first but settles nicely."
+  },
+  {
+    "id": 3,
+    "product_id": 2,
+    "name": "Lina A.",
+    "rating": 5,
+    "comment": "Beautiful rose fragrance, not overpowering."
+  },
+  {
+    "id": 4,
+    "product_id": 3,
+    "name": "Tom R.",
+    "rating": 4,
+    "comment": "Perfect for summer. Very refreshing."
+  }
+]

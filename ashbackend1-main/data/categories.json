@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "T-Shirts",
+    "slug": "t-shirts",
+    "description": "Everyday tees and statement tops",
+    "image": null,
+    "sortOrder": 1,
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Hoodies",
+    "slug": "hoodies",
+    "description": "Cozy hoodies for every season",
+    "image": null,
+    "sortOrder": 2,
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "Jackets",
+    "slug": "jackets",
+    "description": "Layer up with premium outerwear",
+    "image": null,
+    "sortOrder": 3,
+    "active": true
+  },
+  {
+    "id": 4,
+    "name": "Pants",
+    "slug": "pants",
+    "description": "Tailored and relaxed bottoms",
+    "image": null,
+    "sortOrder": 4,
+    "active": true
+  },
+  {
+    "id": 5,
+    "name": "Shorts",
+    "slug": "shorts",
+    "description": "Warm-weather essentials",
+    "image": null,
+    "sortOrder": 5,
+    "active": true
+  },
+  {
+    "id": 6,
+    "name": "Accessories",
+    "slug": "accessories",
+    "description": "Finish the look",
+    "image": null,
+    "sortOrder": 6,
+    "active": true
+  }
+]
