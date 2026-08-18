@@ -184,7 +184,7 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
                     {results.brands.map((brand) => (
                       <Link
                         key={brand.id}
-                        href={`/showroom/${brand.slug}`}
+                        href={`/brands/${brand.slug}`}
                         onClick={() => handleSelect(brand.name)}
                         className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-secondary"
                       >

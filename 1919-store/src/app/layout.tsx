@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Archivo_Black, Work_Sans } from "next/font/google";
 import { Providers } from "@/providers/providers";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -9,16 +9,17 @@ import { Toaster } from "@/components/ui/sonner";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivoBlack = Archivo_Black({
+  variable: "--font-display",
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const workSans = Work_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -29,10 +30,10 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "luxury fashion",
     "streetwear",
     "originals",
-    "premium brands",
+    "vintage editorial",
+    "premium streetwear",
     "1990",
   ],
   openGraph: {
@@ -48,14 +49,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${inter.variable} ${cormorant.variable} min-h-screen antialiased`}
+        className={`${archivoBlack.variable} ${workSans.variable} min-h-screen bg-background font-body text-primary antialiased`}
       >
         <Providers>
           <AnnouncementBar />
           <Navbar />
-          <main className="min-h-screen pt-16 md:pt-20">{children}</main>
+          <main className="min-h-screen">{children}</main>
           <Footer />
           <StorePopup />
           <Toaster position="bottom-right" richColors />

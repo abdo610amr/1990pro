@@ -1,0 +1,1902 @@
+[
+  {
+    "id": 1,
+    "type": "new_order",
+    "title": "New order #3",
+    "message": "abdelrhman amr placed an order — total 38.76.",
+    "meta": {
+      "orderId": 3,
+      "total": 38.76
+    },
+    "read": false,
+    "createdAt": "2026-07-19T15:41:22.390Z"
+  },
+  {
+    "id": 2,
+    "type": "new_order",
+    "title": "New order #1",
+    "message": "Walk-in Guest placed an order — total 22.00.",
+    "meta": {
+      "orderId": 1,
+      "total": 22
+    },
+    "read": false,
+    "createdAt": "2026-07-19T17:23:01.681Z"
+  },
+  {
+    "id": 3,
+    "type": "pos_sale",
+    "title": "POS sale #2",
+    "message": "POS Audit placed a pos sale — total 22.00.",
+    "meta": {
+      "orderId": 2,
+      "total": 22,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T17:39:10.982Z"
+  },
+  {
+    "id": 4,
+    "type": "new_order",
+    "title": "Website order #3",
+    "message": "Web Audit placed a website order — total 22.00.",
+    "meta": {
+      "orderId": 3,
+      "total": 22,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T17:39:11.048Z"
+  },
+  {
+    "id": 5,
+    "type": "status_change",
+    "title": "Order #3 → cancelled",
+    "message": "Status changed from pending to cancelled.",
+    "meta": {
+      "orderId": 3,
+      "previousStatus": "pending",
+      "newStatus": "cancelled"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T17:39:11.077Z"
+  },
+  {
+    "id": 6,
+    "type": "return",
+    "title": "Return / cancel #3",
+    "message": "Order cancelled — inventory restored (cancel).",
+    "meta": {
+      "orderId": 3,
+      "type": "cancel",
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T17:39:11.083Z"
+  },
+  {
+    "id": 7,
+    "type": "return",
+    "title": "Return / cancel #2",
+    "message": "audit return (full).",
+    "meta": {
+      "orderId": 2,
+      "type": "full",
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T17:39:11.142Z"
+  },
+  {
+    "id": 8,
+    "type": "new_order",
+    "title": "Website order #4",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 4,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T18:36:13.113Z"
+  },
+  {
+    "id": 9,
+    "type": "new_order",
+    "title": "Website order #5",
+    "message": "abdelrhman amr placed a website order — total 97.08.",
+    "meta": {
+      "orderId": 5,
+      "total": 97.08,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T19:04:42.341Z"
+  },
+  {
+    "id": 10,
+    "type": "pos_sale",
+    "title": "POS sale #6",
+    "message": "Walk-in Guest placed a pos sale — total 40.00.",
+    "meta": {
+      "orderId": 6,
+      "total": 40,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-07-19T19:14:26.391Z"
+  },
+  {
+    "id": 11,
+    "type": "new_order",
+    "title": "Website order #1",
+    "message": "abdelrhman amr placed a website order — total 86.28.",
+    "meta": {
+      "orderId": 1,
+      "total": 86.28,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:02:41.858Z"
+  },
+  {
+    "id": 12,
+    "type": "status_change",
+    "title": "Order #1 → confirmed",
+    "message": "Status changed from pending to confirmed.",
+    "meta": {
+      "orderId": 1,
+      "previousStatus": "pending",
+      "newStatus": "confirmed"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:02:50.239Z"
+  },
+  {
+    "id": 13,
+    "type": "status_change",
+    "title": "Order #1 → prepared",
+    "message": "Status changed from confirmed to prepared.",
+    "meta": {
+      "orderId": 1,
+      "previousStatus": "confirmed",
+      "newStatus": "prepared"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:02:51.959Z"
+  },
+  {
+    "id": 14,
+    "type": "status_change",
+    "title": "Order #1 → shipped",
+    "message": "Status changed from prepared to shipped.",
+    "meta": {
+      "orderId": 1,
+      "previousStatus": "prepared",
+      "newStatus": "shipped"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:02:53.184Z"
+  },
+  {
+    "id": 15,
+    "type": "status_change",
+    "title": "Order #1 → delivered",
+    "message": "Status changed from shipped to delivered.",
+    "meta": {
+      "orderId": 1,
+      "previousStatus": "shipped",
+      "newStatus": "delivered"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:02:53.946Z"
+  },
+  {
+    "id": 16,
+    "type": "status_change",
+    "title": "Order #1 → cancelled",
+    "message": "Status changed from delivered to cancelled.",
+    "meta": {
+      "orderId": 1,
+      "previousStatus": "delivered",
+      "newStatus": "cancelled"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:36:30.515Z"
+  },
+  {
+    "id": 17,
+    "type": "return",
+    "title": "Return / cancel #1",
+    "message": "Order cancelled — inventory restored (cancel).",
+    "meta": {
+      "orderId": 1,
+      "type": "cancel",
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:36:31.083Z"
+  },
+  {
+    "id": 18,
+    "type": "status_change",
+    "title": "Order #1 → delivered",
+    "message": "Status changed from cancelled to delivered.",
+    "meta": {
+      "orderId": 1,
+      "previousStatus": "cancelled",
+      "newStatus": "delivered"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:36:31.605Z"
+  },
+  {
+    "id": 19,
+    "type": "pos_sale",
+    "title": "POS sale #2",
+    "message": "Walk-in Guest placed a pos sale — total 300.00.",
+    "meta": {
+      "orderId": 2,
+      "total": 300,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:38:44.960Z"
+  },
+  {
+    "id": 20,
+    "type": "out_of_stock",
+    "title": "Out of stock",
+    "message": "test (S) is out of stock.",
+    "meta": {
+      "name": "test",
+      "variant": "S",
+      "sku": null
+    },
+    "read": false,
+    "createdAt": "2026-07-20T03:38:45.371Z"
+  },
+  {
+    "id": 21,
+    "type": "new_order",
+    "title": "Website order #3",
+    "message": "Web Test placed a website order — total 22.00.",
+    "meta": {
+      "orderId": 3,
+      "total": 22,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:13.830Z"
+  },
+  {
+    "id": 22,
+    "type": "pos_sale",
+    "title": "POS sale #4",
+    "message": "POS Test placed a pos sale — total 22.00.",
+    "meta": {
+      "orderId": 4,
+      "total": 22,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:16.331Z"
+  },
+  {
+    "id": 23,
+    "type": "status_change",
+    "title": "Order #3 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 3,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:16.627Z"
+  },
+  {
+    "id": 24,
+    "type": "status_change",
+    "title": "Order #3 → ready",
+    "message": "Status changed from preparing to ready.",
+    "meta": {
+      "orderId": 3,
+      "previousStatus": "preparing",
+      "newStatus": "ready"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:18.119Z"
+  },
+  {
+    "id": 25,
+    "type": "status_change",
+    "title": "Order #3 → completed",
+    "message": "Status changed from ready to completed.",
+    "meta": {
+      "orderId": 3,
+      "previousStatus": "ready",
+      "newStatus": "completed"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:18.398Z"
+  },
+  {
+    "id": 26,
+    "type": "new_order",
+    "title": "Website order #5",
+    "message": "Web Test placed a website order — total 22.00.",
+    "meta": {
+      "orderId": 5,
+      "total": 22,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:18.660Z"
+  },
+  {
+    "id": 27,
+    "type": "status_change",
+    "title": "Order #5 → cancelled",
+    "message": "Status changed from pending to cancelled.",
+    "meta": {
+      "orderId": 5,
+      "previousStatus": "pending",
+      "newStatus": "cancelled"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:18.938Z"
+  },
+  {
+    "id": 28,
+    "type": "return",
+    "title": "Return / cancel #5",
+    "message": "Order cancelled — inventory restored (cancel).",
+    "meta": {
+      "orderId": 5,
+      "type": "cancel",
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:19.217Z"
+  },
+  {
+    "id": 29,
+    "type": "return",
+    "title": "Return / cancel #4",
+    "message": "smoke test (full).",
+    "meta": {
+      "orderId": 4,
+      "type": "full",
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-07-21T14:33:19.475Z"
+  },
+  {
+    "id": 30,
+    "type": "new_order",
+    "title": "Website order #2",
+    "message": "abdelrhman amr placed a website order — total 144.60.",
+    "meta": {
+      "orderId": 2,
+      "total": 144.6,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-07-22T21:02:22.694Z"
+  },
+  {
+    "id": 31,
+    "type": "pos_sale",
+    "title": "POS sale #3",
+    "message": "A customer placed a pos sale — total 71.00.",
+    "meta": {
+      "orderId": 3,
+      "total": 71,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-07-22T21:04:49.386Z"
+  },
+  {
+    "id": 32,
+    "type": "status_change",
+    "title": "Order #2 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 2,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-07-22T21:09:09.709Z"
+  },
+  {
+    "id": 33,
+    "type": "status_change",
+    "title": "Order #2 → ready",
+    "message": "Status changed from preparing to ready.",
+    "meta": {
+      "orderId": 2,
+      "previousStatus": "preparing",
+      "newStatus": "ready"
+    },
+    "read": false,
+    "createdAt": "2026-07-22T21:09:17.325Z"
+  },
+  {
+    "id": 34,
+    "type": "status_change",
+    "title": "Order #2 → completed",
+    "message": "Status changed from ready to completed.",
+    "meta": {
+      "orderId": 2,
+      "previousStatus": "ready",
+      "newStatus": "completed"
+    },
+    "read": false,
+    "createdAt": "2026-07-22T21:09:21.250Z"
+  },
+  {
+    "id": 35,
+    "type": "pos_sale",
+    "title": "POS sale #4",
+    "message": "Demo Customer placed a pos sale — total 90.00.",
+    "meta": {
+      "orderId": 4,
+      "total": 90,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T16:29:58.623Z"
+  },
+  {
+    "id": 36,
+    "type": "pos_sale",
+    "title": "POS sale #5",
+    "message": "A customer placed a pos sale — total 17.00.",
+    "meta": {
+      "orderId": 5,
+      "total": 17,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:05:03.622Z"
+  },
+  {
+    "id": 37,
+    "type": "low_stock",
+    "title": "Low stock",
+    "message": "test (S) is low — 2 left (threshold 5).",
+    "meta": {
+      "name": "test",
+      "variant": "S",
+      "stock": 2,
+      "threshold": 5
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:05:04.020Z"
+  },
+  {
+    "id": 38,
+    "type": "new_order",
+    "title": "Website order #6",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 6,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:11:47.422Z"
+  },
+  {
+    "id": 39,
+    "type": "new_order",
+    "title": "Website order #7",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 7,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:11:59.159Z"
+  },
+  {
+    "id": 40,
+    "type": "new_order",
+    "title": "Website order #8",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 8,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:12:00.658Z"
+  },
+  {
+    "id": 41,
+    "type": "new_order",
+    "title": "Website order #9",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 9,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:14:25.960Z"
+  },
+  {
+    "id": 42,
+    "type": "new_order",
+    "title": "Website order #10",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 10,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:14:35.668Z"
+  },
+  {
+    "id": 43,
+    "type": "new_order",
+    "title": "Website order #11",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 11,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:14:56.416Z"
+  },
+  {
+    "id": 44,
+    "type": "new_order",
+    "title": "Website order #12",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 12,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:15:15.774Z"
+  },
+  {
+    "id": 45,
+    "type": "new_order",
+    "title": "Website order #13",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 13,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:15:38.364Z"
+  },
+  {
+    "id": 46,
+    "type": "new_order",
+    "title": "Website order #14",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 14,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:15:53.937Z"
+  },
+  {
+    "id": 47,
+    "type": "new_order",
+    "title": "Website order #15",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 15,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:16:12.408Z"
+  },
+  {
+    "id": 48,
+    "type": "new_order",
+    "title": "Website order #16",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 16,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:16:37.245Z"
+  },
+  {
+    "id": 49,
+    "type": "new_order",
+    "title": "Website order #17",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 17,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:16:59.970Z"
+  },
+  {
+    "id": 50,
+    "type": "new_order",
+    "title": "Website order #18",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 18,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:17:08.996Z"
+  },
+  {
+    "id": 51,
+    "type": "new_order",
+    "title": "Website order #19",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 19,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:17:21.364Z"
+  },
+  {
+    "id": 52,
+    "type": "new_order",
+    "title": "Website order #20",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 20,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:17:37.135Z"
+  },
+  {
+    "id": 53,
+    "type": "new_order",
+    "title": "Website order #21",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 21,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:17:58.868Z"
+  },
+  {
+    "id": 54,
+    "type": "new_order",
+    "title": "Website order #22",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 22,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:18:10.223Z"
+  },
+  {
+    "id": 55,
+    "type": "new_order",
+    "title": "Website order #23",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 23,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:18:29.510Z"
+  },
+  {
+    "id": 56,
+    "type": "new_order",
+    "title": "Website order #24",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 24,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:18:53.118Z"
+  },
+  {
+    "id": 57,
+    "type": "status_change",
+    "title": "Order #23 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 23,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:19:09.265Z"
+  },
+  {
+    "id": 58,
+    "type": "status_change",
+    "title": "Order #23 → ready",
+    "message": "Status changed from preparing to ready.",
+    "meta": {
+      "orderId": 23,
+      "previousStatus": "preparing",
+      "newStatus": "ready"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:19:27.674Z"
+  },
+  {
+    "id": 59,
+    "type": "status_change",
+    "title": "Order #23 → completed",
+    "message": "Status changed from ready to completed.",
+    "meta": {
+      "orderId": 23,
+      "previousStatus": "ready",
+      "newStatus": "completed"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:19:33.630Z"
+  },
+  {
+    "id": 60,
+    "type": "new_order",
+    "title": "Website order #25",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 25,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:20:02.659Z"
+  },
+  {
+    "id": 61,
+    "type": "new_order",
+    "title": "Website order #26",
+    "message": "Abdo Amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 26,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:20:39.235Z"
+  },
+  {
+    "id": 62,
+    "type": "new_order",
+    "title": "Website order #6",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 6,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:22:35.556Z"
+  },
+  {
+    "id": 63,
+    "type": "new_order",
+    "title": "Website order #7",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 7,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:22:37.300Z"
+  },
+  {
+    "id": 64,
+    "type": "new_order",
+    "title": "Website order #8",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 8,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:22:52.384Z"
+  },
+  {
+    "id": 65,
+    "type": "new_order",
+    "title": "Website order #9",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 9,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:23:12.781Z"
+  },
+  {
+    "id": 66,
+    "type": "new_order",
+    "title": "Website order #10",
+    "message": "John Doe placed a website order — total 33.36.",
+    "meta": {
+      "orderId": 10,
+      "total": 33.36,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:31:00.169Z"
+  },
+  {
+    "id": 67,
+    "type": "new_order",
+    "title": "Website order #11",
+    "message": "Abdo Amr placed a website order — total 33.36.",
+    "meta": {
+      "orderId": 11,
+      "total": 33.36,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:41:10.503Z"
+  },
+  {
+    "id": 68,
+    "type": "new_order",
+    "title": "Website order #12",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 12,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:46:12.265Z"
+  },
+  {
+    "id": 69,
+    "type": "new_order",
+    "title": "Website order #13",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 13,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:46:15.751Z"
+  },
+  {
+    "id": 70,
+    "type": "new_order",
+    "title": "Website order #14",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 14,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:46:54.251Z"
+  },
+  {
+    "id": 71,
+    "type": "new_order",
+    "title": "Website order #15",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 15,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:46:56.045Z"
+  },
+  {
+    "id": 72,
+    "type": "new_order",
+    "title": "Website order #16",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 16,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:47:12.060Z"
+  },
+  {
+    "id": 73,
+    "type": "new_order",
+    "title": "Website order #17",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 17,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:47:13.791Z"
+  },
+  {
+    "id": 74,
+    "type": "new_order",
+    "title": "Website order #18",
+    "message": "abdelrhman amr1 placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 18,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:48:13.815Z"
+  },
+  {
+    "id": 75,
+    "type": "new_order",
+    "title": "Website order #19",
+    "message": "abdelrhman amr1 placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 19,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:48:15.712Z"
+  },
+  {
+    "id": 76,
+    "type": "new_order",
+    "title": "Website order #20",
+    "message": "abdelrhman amr1 placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 20,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:52:07.612Z"
+  },
+  {
+    "id": 77,
+    "type": "new_order",
+    "title": "Website order #21",
+    "message": "John Doe placed a website order — total 62.52.",
+    "meta": {
+      "orderId": 21,
+      "total": 62.52,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:53:32.499Z"
+  },
+  {
+    "id": 78,
+    "type": "new_order",
+    "title": "Website order #22",
+    "message": "John Doe placed a website order — total 62.52.",
+    "meta": {
+      "orderId": 22,
+      "total": 62.52,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:54:45.611Z"
+  },
+  {
+    "id": 79,
+    "type": "new_order",
+    "title": "Website order #23",
+    "message": "Test User placed a website order — total 10.00.",
+    "meta": {
+      "orderId": 23,
+      "total": 10,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:56:53.307Z"
+  },
+  {
+    "id": 80,
+    "type": "new_order",
+    "title": "Website order #24",
+    "message": "Test Fix placed a website order — total 10.00.",
+    "meta": {
+      "orderId": 24,
+      "total": 10,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T20:58:24.113Z"
+  },
+  {
+    "id": 81,
+    "type": "new_order",
+    "title": "Website order #25",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 25,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-05T21:00:30.216Z"
+  },
+  {
+    "id": 82,
+    "type": "pos_sale",
+    "title": "POS sale #26",
+    "message": "QA Test Customer placed a pos sale — total 22.00.",
+    "meta": {
+      "orderId": 26,
+      "total": 22,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T00:49:43.510Z"
+  },
+  {
+    "id": 83,
+    "type": "new_order",
+    "title": "Website order #27",
+    "message": "QA Web Customer placed a website order — total 22.00.",
+    "meta": {
+      "orderId": 27,
+      "total": 22,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T00:49:43.603Z"
+  },
+  {
+    "id": 84,
+    "type": "new_order",
+    "title": "Website order #28",
+    "message": "A customer placed a website order — total 0.00.",
+    "meta": {
+      "orderId": 28,
+      "total": null,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T00:49:43.624Z"
+  },
+  {
+    "id": 85,
+    "type": "pos_sale",
+    "title": "POS sale #29",
+    "message": "Discount OK placed a pos sale — total 90.00.",
+    "meta": {
+      "orderId": 29,
+      "total": 90,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T00:49:43.639Z"
+  },
+  {
+    "id": 86,
+    "type": "pos_sale",
+    "title": "POS sale #30",
+    "message": "Discount Low placed a pos sale — total 92.00.",
+    "meta": {
+      "orderId": 30,
+      "total": 92,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T00:49:43.657Z"
+  },
+  {
+    "id": 87,
+    "type": "new_order",
+    "title": "Website order #31",
+    "message": "Cancel Test placed a website order — total 22.00.",
+    "meta": {
+      "orderId": 31,
+      "total": 22,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T00:49:43.681Z"
+  },
+  {
+    "id": 88,
+    "type": "pos_sale",
+    "title": "POS sale #32",
+    "message": "QA POS Test placed a pos sale — total 22.00.",
+    "meta": {
+      "orderId": 32,
+      "total": 22,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:50.380Z"
+  },
+  {
+    "id": 89,
+    "type": "new_order",
+    "title": "Website order #33",
+    "message": "QA Web Test placed a website order — total 22.00.",
+    "meta": {
+      "orderId": 33,
+      "total": 22,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:50.398Z"
+  },
+  {
+    "id": 90,
+    "type": "status_change",
+    "title": "Order #33 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 33,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:50.406Z"
+  },
+  {
+    "id": 91,
+    "type": "status_change",
+    "title": "Order #33 → ready",
+    "message": "Status changed from preparing to ready.",
+    "meta": {
+      "orderId": 33,
+      "previousStatus": "preparing",
+      "newStatus": "ready"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:50.920Z"
+  },
+  {
+    "id": 92,
+    "type": "status_change",
+    "title": "Order #33 → completed",
+    "message": "Status changed from ready to completed.",
+    "meta": {
+      "orderId": 33,
+      "previousStatus": "ready",
+      "newStatus": "completed"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:51.149Z"
+  },
+  {
+    "id": 93,
+    "type": "status_change",
+    "title": "Order #33 → ready",
+    "message": "Status changed from completed to ready.",
+    "meta": {
+      "orderId": 33,
+      "previousStatus": "completed",
+      "newStatus": "ready"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:51.457Z"
+  },
+  {
+    "id": 94,
+    "type": "new_order",
+    "title": "Website order #34",
+    "message": "Cancel Test placed a website order — total 22.00.",
+    "meta": {
+      "orderId": 34,
+      "total": 22,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:53.307Z"
+  },
+  {
+    "id": 95,
+    "type": "status_change",
+    "title": "Order #34 → cancelled",
+    "message": "Status changed from pending to cancelled.",
+    "meta": {
+      "orderId": 34,
+      "previousStatus": "pending",
+      "newStatus": "cancelled"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:53.317Z"
+  },
+  {
+    "id": 96,
+    "type": "return",
+    "title": "Return / cancel #34",
+    "message": "Order cancelled — inventory restored (cancel).",
+    "meta": {
+      "orderId": 34,
+      "type": "cancel",
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:53.560Z"
+  },
+  {
+    "id": 97,
+    "type": "pos_sale",
+    "title": "POS sale #35",
+    "message": "Return Test placed a pos sale — total 22.00.",
+    "meta": {
+      "orderId": 35,
+      "total": 22,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:53.968Z"
+  },
+  {
+    "id": 98,
+    "type": "return",
+    "title": "Return / cancel #35",
+    "message": "QA test return (full).",
+    "meta": {
+      "orderId": 35,
+      "type": "full",
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:53.987Z"
+  },
+  {
+    "id": 99,
+    "type": "pos_sale",
+    "title": "POS sale #36",
+    "message": "D10 placed a pos sale — total 90.00.",
+    "meta": {
+      "orderId": 36,
+      "total": 90,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:54.275Z"
+  },
+  {
+    "id": 100,
+    "type": "pos_sale",
+    "title": "POS sale #37",
+    "message": "D8 placed a pos sale — total 92.00.",
+    "meta": {
+      "orderId": 37,
+      "total": 92,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:54.294Z"
+  },
+  {
+    "id": 101,
+    "type": "pos_sale",
+    "title": "POS sale #38",
+    "message": "Admin50 placed a pos sale — total 50.00.",
+    "meta": {
+      "orderId": 38,
+      "total": 50,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:54.310Z"
+  },
+  {
+    "id": 102,
+    "type": "new_order",
+    "title": "Website order #39",
+    "message": "NoItems placed a website order — total 0.00.",
+    "meta": {
+      "orderId": 39,
+      "total": 0,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-06T01:12:54.432Z"
+  },
+  {
+    "id": 103,
+    "type": "pos_sale",
+    "title": "POS sale #40",
+    "message": "Seller Test placed a pos sale — total 50.00.",
+    "meta": {
+      "orderId": 40,
+      "total": 50,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:28.604Z"
+  },
+  {
+    "id": 104,
+    "type": "pos_sale",
+    "title": "POS sale #41",
+    "message": "POS E2E Test placed a pos sale — total 150.00.",
+    "meta": {
+      "orderId": 41,
+      "total": 150,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:28.816Z"
+  },
+  {
+    "id": 105,
+    "type": "pos_sale",
+    "title": "POS sale #42",
+    "message": "Disc Ahmed(10%) placed a pos sale — total 90.00.",
+    "meta": {
+      "orderId": 42,
+      "total": 90,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:28.888Z"
+  },
+  {
+    "id": 106,
+    "type": "pos_sale",
+    "title": "POS sale #43",
+    "message": "Disc Ahmed(10%) placed a pos sale — total 92.00.",
+    "meta": {
+      "orderId": 43,
+      "total": 92,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:28.973Z"
+  },
+  {
+    "id": 107,
+    "type": "pos_sale",
+    "title": "POS sale #44",
+    "message": "Disc Ahmed(10%) placed a pos sale — total 100.00.",
+    "meta": {
+      "orderId": 44,
+      "total": 100,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:29.035Z"
+  },
+  {
+    "id": 108,
+    "type": "pos_sale",
+    "title": "POS sale #45",
+    "message": "Disc Ali(5%) placed a pos sale — total 95.00.",
+    "meta": {
+      "orderId": 45,
+      "total": 95,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:29.221Z"
+  },
+  {
+    "id": 109,
+    "type": "pos_sale",
+    "title": "POS sale #46",
+    "message": "Disc Ali(5%) placed a pos sale — total 97.00.",
+    "meta": {
+      "orderId": 46,
+      "total": 97,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:29.262Z"
+  },
+  {
+    "id": 110,
+    "type": "pos_sale",
+    "title": "POS sale #47",
+    "message": "Disc Admin(100%) placed a pos sale — total 50.00.",
+    "meta": {
+      "orderId": 47,
+      "total": 50,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:29.334Z"
+  },
+  {
+    "id": 111,
+    "type": "pos_sale",
+    "title": "POS sale #48",
+    "message": "Disc Admin(100%) placed a pos sale — total 10.00.",
+    "meta": {
+      "orderId": 48,
+      "total": 10,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:29.430Z"
+  },
+  {
+    "id": 112,
+    "type": "new_order",
+    "title": "Website order #49",
+    "message": "Inv Test placed a website order — total 100.00.",
+    "meta": {
+      "orderId": 49,
+      "total": 100,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:29.590Z"
+  },
+  {
+    "id": 113,
+    "type": "return",
+    "title": "Return / cancel #49",
+    "message": "Order cancelled — inventory restored (cancel).",
+    "meta": {
+      "orderId": 49,
+      "type": "cancel",
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:29.837Z"
+  },
+  {
+    "id": 114,
+    "type": "pos_sale",
+    "title": "POS sale #50",
+    "message": "Return Inv placed a pos sale — total 40.00.",
+    "meta": {
+      "orderId": 50,
+      "total": 40,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:30.102Z"
+  },
+  {
+    "id": 115,
+    "type": "return",
+    "title": "Return / cancel #50",
+    "message": "QA return test (full).",
+    "meta": {
+      "orderId": 50,
+      "type": "full",
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:30.128Z"
+  },
+  {
+    "id": 116,
+    "type": "new_order",
+    "title": "Website order #51",
+    "message": "Website E2E placed a website order — total 20.00.",
+    "meta": {
+      "orderId": 51,
+      "total": 20,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:30.416Z"
+  },
+  {
+    "id": 117,
+    "type": "pos_sale",
+    "title": "POS sale #52",
+    "message": "POS Sync Test placed a pos sale — total 20.00.",
+    "meta": {
+      "orderId": 52,
+      "total": 20,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:30.477Z"
+  },
+  {
+    "id": 118,
+    "type": "status_change",
+    "title": "Order #51 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 51,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:30.504Z"
+  },
+  {
+    "id": 119,
+    "type": "status_change",
+    "title": "Order #51 → ready",
+    "message": "Status changed from preparing to ready.",
+    "meta": {
+      "orderId": 51,
+      "previousStatus": "preparing",
+      "newStatus": "ready"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:30.781Z"
+  },
+  {
+    "id": 120,
+    "type": "status_change",
+    "title": "Order #51 → completed",
+    "message": "Status changed from ready to completed.",
+    "meta": {
+      "orderId": 51,
+      "previousStatus": "ready",
+      "newStatus": "completed"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T07:01:31.033Z"
+  },
+  {
+    "id": 121,
+    "type": "pos_sale",
+    "title": "POS sale #53",
+    "message": "Valid Customer placed a pos sale — total 100.00.",
+    "meta": {
+      "orderId": 53,
+      "total": 100,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T14:31:16.071Z"
+  },
+  {
+    "id": 122,
+    "type": "pos_sale",
+    "title": "POS sale #54",
+    "message": "Brand Test Customer placed a pos sale — total 850.00.",
+    "meta": {
+      "orderId": 54,
+      "total": 850,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-07T19:05:47.066Z"
+  },
+  {
+    "id": 123,
+    "type": "low_stock",
+    "title": "Low stock",
+    "message": "Nike Tech Fleece (L) is low — 4 left (threshold 5).",
+    "meta": {
+      "name": "Nike Tech Fleece",
+      "variant": "L",
+      "stock": 4,
+      "threshold": 5
+    },
+    "read": false,
+    "createdAt": "2026-08-07T19:05:48.463Z"
+  },
+  {
+    "id": 124,
+    "type": "pos_sale",
+    "title": "POS sale #55",
+    "message": "kenzy placed a pos sale — total 449.00.",
+    "meta": {
+      "orderId": 55,
+      "total": 449,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T15:45:31.432Z"
+  },
+  {
+    "id": 125,
+    "type": "new_order",
+    "title": "Website order #56",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 56,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T15:46:33.027Z"
+  },
+  {
+    "id": 126,
+    "type": "new_order",
+    "title": "Website order #57",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 57,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T15:50:44.631Z"
+  },
+  {
+    "id": 127,
+    "type": "new_order",
+    "title": "Website order #58",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 58,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T15:53:03.087Z"
+  },
+  {
+    "id": 128,
+    "type": "new_order",
+    "title": "Website order #59",
+    "message": "abdelrhman amr placed a website order — total 378.00.",
+    "meta": {
+      "orderId": 59,
+      "total": 378,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T15:56:39.480Z"
+  },
+  {
+    "id": 129,
+    "type": "low_stock",
+    "title": "Low stock",
+    "message": "Nike Tech Fleece (L) is low — 2 left (threshold 5).",
+    "meta": {
+      "name": "Nike Tech Fleece",
+      "variant": "L",
+      "stock": 2,
+      "threshold": 5
+    },
+    "read": false,
+    "createdAt": "2026-08-08T15:56:40.288Z"
+  },
+  {
+    "id": 130,
+    "type": "new_order",
+    "title": "Website order #60",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 60,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T15:59:20.663Z"
+  },
+  {
+    "id": 131,
+    "type": "new_order",
+    "title": "Website order #61",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 61,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T16:01:50.506Z"
+  },
+  {
+    "id": 132,
+    "type": "new_order",
+    "title": "Website order #62",
+    "message": "Automation QA Customer placed a website order — total 450.00.",
+    "meta": {
+      "orderId": 62,
+      "total": 450,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T16:05:14.625Z"
+  },
+  {
+    "id": 133,
+    "type": "status_change",
+    "title": "Order #62 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 62,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T16:05:14.840Z"
+  },
+  {
+    "id": 134,
+    "type": "status_change",
+    "title": "Order #62 → ready",
+    "message": "Status changed from preparing to ready.",
+    "meta": {
+      "orderId": 62,
+      "previousStatus": "preparing",
+      "newStatus": "ready"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T16:05:16.000Z"
+  },
+  {
+    "id": 135,
+    "type": "status_change",
+    "title": "Order #62 → completed",
+    "message": "Status changed from ready to completed.",
+    "meta": {
+      "orderId": 62,
+      "previousStatus": "ready",
+      "newStatus": "completed"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T16:05:19.024Z"
+  },
+  {
+    "id": 136,
+    "type": "pos_sale",
+    "title": "POS sale #63",
+    "message": "Walk-in Guest placed a pos sale — total 350.00.",
+    "meta": {
+      "orderId": 63,
+      "total": 350,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T16:34:43.922Z"
+  },
+  {
+    "id": 137,
+    "type": "low_stock",
+    "title": "Low stock",
+    "message": "Nike Tech Fleece (L) is low — 1 left (threshold 5).",
+    "meta": {
+      "name": "Nike Tech Fleece",
+      "variant": "L",
+      "stock": 1,
+      "threshold": 5
+    },
+    "read": false,
+    "createdAt": "2026-08-08T16:34:44.781Z"
+  },
+  {
+    "id": 138,
+    "type": "status_change",
+    "title": "Order #61 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 61,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T17:53:27.866Z"
+  },
+  {
+    "id": 139,
+    "type": "pos_sale",
+    "title": "POS sale #64",
+    "message": "Walk-in Guest placed a pos sale — total 350.00.",
+    "meta": {
+      "orderId": 64,
+      "total": 350,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T17:56:05.711Z"
+  },
+  {
+    "id": 140,
+    "type": "out_of_stock",
+    "title": "Out of stock",
+    "message": "Nike Tech Fleece (L) is out of stock — SKU NK-TF-L.",
+    "meta": {
+      "name": "Nike Tech Fleece",
+      "variant": "L",
+      "sku": "NK-TF-L"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T17:56:06.204Z"
+  },
+  {
+    "id": 141,
+    "type": "new_order",
+    "title": "Website order #65",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 65,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-08T17:58:07.214Z"
+  },
+  {
+    "id": 142,
+    "type": "pos_sale",
+    "title": "POS sale #66",
+    "message": "Walk-in Guest placed a pos sale — total 500.00.",
+    "meta": {
+      "orderId": 66,
+      "total": 500,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-09T16:50:06.986Z"
+  },
+  {
+    "id": 143,
+    "type": "new_order",
+    "title": "Website order #67",
+    "message": "abdelrhman amr placed a website order — total 38.76.",
+    "meta": {
+      "orderId": 67,
+      "total": 38.76,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-09T16:50:51.682Z"
+  },
+  {
+    "id": 144,
+    "type": "pos_sale",
+    "title": "POS sale #68",
+    "message": "Walk-in Guest placed a pos sale — total 522.00.",
+    "meta": {
+      "orderId": 68,
+      "total": 522,
+      "source": "pos"
+    },
+    "read": false,
+    "createdAt": "2026-08-09T17:04:37.463Z"
+  },
+  {
+    "id": 145,
+    "type": "status_change",
+    "title": "Order #67 → preparing",
+    "message": "Status changed from pending to preparing.",
+    "meta": {
+      "orderId": 67,
+      "previousStatus": "pending",
+      "newStatus": "preparing"
+    },
+    "read": false,
+    "createdAt": "2026-08-09T17:05:17.609Z"
+  },
+  {
+    "id": 146,
+    "type": "new_order",
+    "title": "Website order #69",
+    "message": "abdelrhman amr placed a website order — total 94.92.",
+    "meta": {
+      "orderId": 69,
+      "total": 94.92,
+      "source": "website"
+    },
+    "read": false,
+    "createdAt": "2026-08-09T17:21:53.977Z"
+  }
+]

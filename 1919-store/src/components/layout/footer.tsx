@@ -1,123 +1,50 @@
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
-import { SocialLinks } from "@/components/shared/social-links";
-import { NewsletterForm } from "@/components/shared/newsletter-form";
-import { BrandLogo } from "@/components/shared/brand-logo";
-import {
-  FOOTER_LINKS,
-  SITE_ESTABLISHED,
-  SITE_MARK,
-  SITE_NAME,
-  SITE_SLOGAN,
-} from "@/lib/constants";
+import { OtzMark } from "@/components/shared/otz-mark";
+import { FOOTER_LINKS } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-secondary/30">
-      <div className="luxury-container luxury-section">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block" aria-label={`${SITE_NAME} home`}>
-              <BrandLogo className="h-16 w-52" />
-            </Link>
-            <p className="mt-2 text-sm text-muted-foreground">{SITE_SLOGAN}</p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Discover exclusive Originals and curated premium local brands at
-              1990 — where luxury meets originality.
-            </p>
-            <SocialLinks
-              className="mt-6"
-              instagram="https://instagram.com/1990official"
-              twitter="https://twitter.com/1990official"
-              facebook="https://facebook.com/1990official"
-            />
+    <footer className="bg-background px-6 py-20 md:px-12 border-t border-border">
+      <div className="mx-auto max-w-[1500px]">
+        <div className="flex flex-col gap-10 border-b border-border pb-12 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="display block text-[clamp(3rem,10vw,7rem)] text-primary uppercase">1990</span>
+            <span className="label mt-4 block text-wine/70">Made for Originals</span>
           </div>
 
-          <div>
-            <h4 className="mb-4 text-sm font-medium tracking-wider uppercase">
-              Shop
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.shop.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 gap-8 md:gap-12">
+            <div>
+              <h4 className="label text-primary mb-3">Shop</h4>
+              <ul className="space-y-2">
+                {FOOTER_LINKS.shop.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="label text-[11px] text-wine/70 transition-colors hover:text-primary">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="mb-4 text-sm font-medium tracking-wider uppercase">
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4 text-sm font-medium tracking-wider uppercase">
-              Account
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.account.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h4 className="label text-primary mb-3">Company</h4>
+              <ul className="space-y-2">
+                {FOOTER_LINKS.company.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="label text-[11px] text-wine/70 transition-colors hover:text-primary">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="mt-16 rounded-2xl bg-primary p-8 text-primary-foreground md:p-12">
-          <div className="mx-auto max-w-xl text-center">
-            <h3 className="font-heading text-2xl font-light md:text-3xl">
-              Join the Originals
-            </h3>
-            <p className="mt-2 text-sm opacity-80">
-              Subscribe for exclusive access to new collections, early releases,
-              and member-only offers.
-            </p>
-            <NewsletterForm />
-          </div>
-        </div>
-      </div>
-
-      <Separator />
-      <div className="luxury-container flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
-        <p className="text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} {SITE_NAME} · {SITE_MARK} · Est.{" "}
-          {SITE_ESTABLISHED}. All rights reserved.
-        </p>
-        <div className="flex gap-6 text-xs text-muted-foreground">
-          <Link href="/privacy" className="hover:text-foreground">
-            Privacy Policy
-          </Link>
-          <Link href="/terms" className="hover:text-foreground">
-            Terms of Service
-          </Link>
-          <Link href="/shipping" className="hover:text-foreground">
-            Shipping Info
-          </Link>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <span className="label text-wine/60">Est. 2026</span>
+          <OtzMark />
+          <span className="label text-wine/60">© 1990 — Made for Originals</span>
         </div>
       </div>
     </footer>

@@ -2,71 +2,61 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Star, Users } from "lucide-react";
 import type { Brand } from "@/types";
-import { formatFollowers } from "@/lib/format";
-import { Button } from "@/components/ui/button";
+import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
 interface BrandCardProps {
   brand: Brand;
   className?: string;
+  index?: number;
 }
 
-export function BrandCard({ brand, className }: BrandCardProps) {
+export function BrandCard({ brand, className, index = 0 }: BrandCardProps) {
+  const { ref, visible } = useReveal<HTMLDivElement>(0.12);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className={cn("group", className)}
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${(index % 3) * 120}ms` }}
+      className={cn("reveal group", visible && "is-visible", className)}
     >
-      <Link href={`/showroom/${brand.slug}`}>
-        <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
+      <Link href={`/brands/${brand.slug}`} className="block">
+        <div className="relative aspect-[16/10] overflow-hidden bg-secondary border border-border">
           <Image
-            src={brand.coverImage}
+            src={brand.coverImage || brand.logo || "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=500&fit=crop"}
             alt={brand.name}
             fill
-            className="image-zoom object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-          <div className="absolute right-4 bottom-4 left-4 flex items-end justify-between">
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+          
+          <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
             <div className="flex items-center gap-3">
-              <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-white/30">
-                <Image
-                  src={brand.logo}
-                  alt={`${brand.name} logo`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              {brand.logo && (
+                <div className="relative h-10 w-10 overflow-hidden border border-border bg-background p-1 shrink-0">
+                  <Image
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              )}
               <div>
-                <h3 className="text-lg font-medium text-white">{brand.name}</h3>
-                <p className="text-xs text-white/70">{brand.story}</p>
+                <h3 className="display text-xl uppercase text-primary">{brand.name}</h3>
+                <p className="label mt-1 text-[10px] text-wine/70 line-clamp-1">
+                  {brand.story || brand.about || brand.description || "Official Brand"}
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-4 flex items-center justify-between">
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Star className="h-3.5 w-3.5 fill-primary text-primary" />
-              {brand.rating}
-            </span>
-            <span className="flex items-center gap-1">
-              <Users className="h-3.5 w-3.5" />
-              {formatFollowers(brand.followers)}
+            <span className="label text-[10px] text-primary border border-primary px-3 py-1.5 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+              View →
             </span>
           </div>
-          <Button variant="outline" size="sm" className="rounded-full">
-            Visit Store
-          </Button>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }

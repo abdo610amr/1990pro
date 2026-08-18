@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProductCard } from "@/components/shared/product-card";
 import { PageBreadcrumb } from "@/components/shared/page-breadcrumb";
 import { PageTransition } from "@/components/shared/page-transition";
@@ -13,42 +12,32 @@ import { EmptyState } from "@/components/shared/empty-state";
 import { ProductGridSkeleton } from "@/components/shared/loading-skeleton";
 import { catalogApi } from "@/lib/api-client";
 import { useCatalog } from "@/providers/catalog-provider";
-import type { ProductFilters, ProductType } from "@/types";
+import type { ProductFilters } from "@/types";
 
 const ITEMS_PER_PAGE = 12;
 
 export function ShopContent() {
   const { products, categories, brands, isLoading, error } = useCatalog();
   const searchParams = useSearchParams();
-  const tabParam = searchParams.get("tab") as ProductType | null;
   const categoryParam = searchParams.get("category");
   const sortParam = searchParams.get("sort");
+  const brandParam = searchParams.get("brand");
 
-  const [activeTab, setActiveTab] = useState<ProductType>(
-    tabParam === "showroom" ? "showroom" : "originals"
-  );
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState<ProductFilters>({
-    type: activeTab,
     category: categoryParam ?? undefined,
+    brand: brandParam ?? undefined,
     sort: (sortParam as ProductFilters["sort"]) ?? "newest",
   });
-
-  const handleTabChange = (tab: string) => {
-    const type = tab as ProductType;
-    setActiveTab(type);
-    setFilters((f) => ({ ...f, type }));
-    setCurrentPage(1);
-  };
 
   const categoryId = categories.find(
     (category) => category.slug === filters.category
   )?.id;
+
   const productQuery = useQuery({
     queryKey: [
       "catalog",
       "shop",
-      activeTab,
       filters,
       categoryId,
       currentPage,
@@ -57,7 +46,6 @@ export function ShopContent() {
       catalogApi.searchProducts({
         categoryId,
         brandId: filters.brand,
-        productType: activeTab,
         availability: filters.availability,
         size: filters.size,
         minPrice: filters.minPrice,
@@ -67,6 +55,7 @@ export function ShopContent() {
         limit: ITEMS_PER_PAGE,
       }),
   });
+
   const resultIds = new Set(
     (productQuery.data?.items ?? []).map((product) => String(product.id))
   );
@@ -87,27 +76,9 @@ export function ShopContent() {
           <p className="luxury-subheading">Discover</p>
           <h1 className="luxury-heading mt-2">Shop</h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            Explore official 1990 Originals or discover curated premium local
-            brands in our Showroom.
+            Explore 1990 Originals and discover our curated selection of brands.
           </p>
         </div>
-
-        <Tabs value={activeTab} onValueChange={handleTabChange} className="mb-8">
-          <TabsList className="h-12 rounded-full bg-secondary p-1">
-            <TabsTrigger
-              value="originals"
-              className="rounded-full px-8 data-active:bg-primary data-active:text-primary-foreground"
-            >
-              Originals
-            </TabsTrigger>
-            <TabsTrigger
-              value="showroom"
-              className="rounded-full px-8 data-active:bg-primary data-active:text-primary-foreground"
-            >
-              Showroom
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
 
         <div className="flex flex-col gap-8 lg:flex-row">
           <ShopFilters

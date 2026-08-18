@@ -35,7 +35,7 @@ export default function ShippingPage() {
           </h2>
           <p>
             Once your order ships, you&apos;ll receive a confirmation email with
-            a tracking number. Track your package from your account orders page.
+            a tracking number to follow your delivery.
           </p>
           <h2 className="font-heading text-xl font-light text-foreground">
             International Shipping

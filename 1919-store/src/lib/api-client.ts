@@ -1,10 +1,8 @@
 import type {
   BackendBrand,
   BackendCategory,
-  BackendOrder,
   BackendProduct,
   BackendReview,
-  BackendUser,
 } from "@/lib/backend-types";
 
 export const API_BASE_URL =
@@ -118,79 +116,18 @@ export const catalogApi = {
       showOnce: boolean;
       showEveryVisit: boolean;
     }>("/popup"),
-};
-
-export const authApi = {
-  login: (email: string, password: string) =>
-    apiRequest<{ token: string; user: BackendUser }>("/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-    }),
-  register: (data: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  }) =>
-    apiRequest<{ token: string; user: BackendUser }>("/auth/register", {
-      method: "POST",
-      body: JSON.stringify(data),
-    }),
-  me: (token: string) =>
-    apiRequest<BackendUser>("/auth/me", { token }),
-  updateProfile: (token: string, data: Record<string, unknown>) =>
-    apiRequest<BackendUser>("/auth/profile", {
-      method: "PUT",
-      token,
-      body: JSON.stringify(data),
-    }),
-  forgotPassword: (email: string) =>
-    apiRequest<{ message: string }>("/auth/forgot-password", {
-      method: "POST",
-      body: JSON.stringify({ email }),
-    }),
-  resetPassword: (token: string, password: string) =>
-    apiRequest<{ message: string }>("/auth/reset-password", {
-      method: "POST",
-      body: JSON.stringify({ token, password }),
-    }),
-  addresses: (token: string) =>
-    apiRequest<Array<Record<string, unknown>>>("/auth/addresses", { token }),
-  addAddress: (token: string, data: Record<string, unknown>) =>
-    apiRequest<Record<string, unknown>>("/auth/addresses", {
-      method: "POST",
-      token,
-      body: JSON.stringify(data),
-    }),
-  updateAddress: (
-    token: string,
-    id: string,
-    data: Record<string, unknown>
-  ) =>
-    apiRequest<Record<string, unknown>>(`/auth/addresses/${id}`, {
-      method: "PUT",
-      token,
-      body: JSON.stringify(data),
-    }),
-  deleteAddress: (token: string, id: string) =>
-    apiRequest<{ message: string }>(`/auth/addresses/${id}`, {
-      method: "DELETE",
-      token,
-    }),
-  orders: (token: string) =>
-    apiRequest<BackendOrder[]>("/auth/orders", { token }),
-  wishlist: (token: string) =>
-    apiRequest<number[]>("/auth/wishlist", { token }),
-  addWishlist: (token: string, productId: number) =>
-    apiRequest<number[]>(`/auth/wishlist/${productId}`, {
-      method: "POST",
-      token,
-    }),
-  removeWishlist: (token: string, productId: number) =>
-    apiRequest<number[]>(`/auth/wishlist/${productId}`, {
-      method: "DELETE",
-      token,
-    }),
+  homepageCarousel: () =>
+    apiRequest<
+      {
+        id: string;
+        image: string;
+        title: string;
+        description: string;
+        link: string;
+        sort_order: number;
+        is_active: boolean;
+      }[]
+    >("/website/homepage-carousel?active=true"),
 };
 
 export interface PromoResult {
@@ -220,6 +157,11 @@ export const commerceApi = {
     apiRequest<{ message: string; orderId: number }>("/orders", {
       method: "POST",
       body: formData,
+    }),
+  createOrderJson: (payload: Record<string, unknown>) =>
+    apiRequest<{ message: string; orderId: number }>("/orders", {
+      method: "POST",
+      body: JSON.stringify(payload),
     }),
   checkStock: (productId: number, variant: string, quantity: number) =>
     apiRequest<{ available: boolean; stock: number; requested: number }>(

@@ -4,7 +4,7 @@ import { ShopContent } from "@/components/shop/shop-content";
 
 export const metadata = {
   title: "Shop",
-  description: "Browse 1990 Originals and curated Showroom brands.",
+  description: "Browse 1990 Originals and our curated selection of brands.",
 };
 
 export default function ShopPage() {

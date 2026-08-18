@@ -1,79 +1,174 @@
 "use client";
 
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { SITE_SLOGAN } from "@/lib/constants";
+import Link from "next/link";
+import { OtzMark } from "@/components/shared/otz-mark";
+import { catalogApi } from "@/lib/api-client";
+
+interface HeroImage {
+  id: string;
+  image: string;
+  sort_order: number;
+}
+
+const SLIDE_INTERVAL = 6000; // 6 seconds per image
+const FADE_DURATION = 1500; // 1.5s crossfade
+
+const TARGET_TEXT = "1990";
+const TYPE_SPEED = 220; // ms per char when typing
+const DELETE_SPEED = 140; // ms per char when deleting
+const PAUSE_TYPED = 3000; // ms pause when full text typed
+const PAUSE_DELETED = 800; // ms pause when text deleted
 
 export function HeroBanner() {
-  return (
-    <section className="relative min-h-[90vh] overflow-hidden">
-      <Image
-        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=1080&fit=crop"
-        alt="1990 Luxury Fashion"
-        fill
-        priority
-        className="object-cover"
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+  const [images, setImages] = useState<HeroImage[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-      <div className="relative flex min-h-[90vh] items-center">
-        <div className="luxury-container">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-2xl"
-          >
-            <p className="luxury-subheading text-white/70">{SITE_SLOGAN}</p>
-            <h1 className="mt-4 font-heading text-5xl font-light tracking-tight text-white md:text-7xl lg:text-8xl">
-              Define Your
-              <br />
-              Originality
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-white/80 md:text-lg">
-              Discover exclusive Originals and curated premium local brands.
-              Luxury fashion for those who lead, never follow.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/shop">
-                <Button size="lg" className="rounded-full px-8">
-                  Shop Now
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/originals">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full border-white/30 bg-white/10 px-8 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
-                >
-                  Explore Originals
-                </Button>
-              </Link>
+  // Typewriter animation state
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Fetch active hero background images from backend
+  useEffect(() => {
+    catalogApi
+      .homepageCarousel()
+      .then((data) => {
+        const sorted = data
+          .sort((a, b) => a.sort_order - b.sort_order)
+          .map(({ id, image, sort_order }) => ({ id, image, sort_order }));
+        setImages(sorted);
+      })
+      .catch(() => {
+        // Silently fail — hero works without background images
+      });
+  }, []);
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  // Typewriter effect loop (typing & deleting 1990)
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting && displayText !== TARGET_TEXT) {
+      timer = setTimeout(() => {
+        setDisplayText(TARGET_TEXT.slice(0, displayText.length + 1));
+      }, TYPE_SPEED);
+    } else if (!isDeleting && displayText === TARGET_TEXT) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, PAUSE_TYPED);
+    } else if (isDeleting && displayText !== "") {
+      timer = setTimeout(() => {
+        setDisplayText(TARGET_TEXT.slice(0, displayText.length - 1));
+      }, DELETE_SPEED);
+    } else if (isDeleting && displayText === "") {
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+      }, PAUSE_DELETED);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting]);
+
+  return (
+    <section className="grain relative flex min-h-[100svh] flex-col justify-center px-6 pt-28 md:px-12 overflow-hidden">
+      {/* ── Background Slideshow ── */}
+      {images.length > 0 && (
+        <div className="absolute inset-0 z-0">
+          {images.map((img, i) => (
+            <div
+              key={img.id}
+              className="absolute inset-0"
+              style={{
+                opacity: i === currentIndex ? 1 : 0,
+                transition: `opacity ${FADE_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+              }}
+            >
+              <Image
+                src={img.image}
+                alt="1990 Store"
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority={i === 0}
+                quality={85}
+              />
             </div>
-          </motion.div>
+          ))}
+
+          {/* Dark / Burgundy overlay for text readability */}
+          <div className="absolute inset-0 bg-[#2a0a10]/65" />
+        </div>
+      )}
+
+      {/* Fallback solid background when no images */}
+      {images.length === 0 && (
+        <div className="absolute inset-0 z-0 bg-background" />
+      )}
+
+      {/* ── Hero Content (foreground) ── */}
+      <div className="relative z-10 mx-auto w-full max-w-[1500px]">
+        <p className="rise label text-wine/70" style={{ animationDelay: "80ms" }}>
+          1990 — LUXURY WEAR
+        </p>
+
+        {/* Typing & Deleting 1990 Animation */}
+        <h1
+          className="rise display mt-6 text-[clamp(5rem,23vw,20rem)] text-primary leading-none min-h-[1em] select-none flex items-center"
+          style={{ animationDelay: "220ms" }}
+        >
+          <span>{displayText || "\u00A0"}</span>
+          <span className="inline-block animate-pulse text-wine/70 text-[0.7em] ml-1 font-mono">
+            |
+          </span>
+        </h1>
+
+        <div
+          className="rise mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-border pt-6"
+          style={{ animationDelay: "620ms" }}
+        >
+          <span className="label text-primary">Made for Originals</span>
+          <OtzMark />
+          <span className="label ml-auto text-wine/70">Est. 2026</span>
+        </div>
+
+        <div className="rise mt-16 md:mt-20" style={{ animationDelay: "880ms" }}>
+          <Link
+            href="/shop"
+            className="label group inline-flex items-center gap-4 border border-primary px-8 py-4 text-primary transition-colors duration-500 hover:bg-primary hover:text-primary-foreground"
+          >
+            Shop the Collection
+            <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+          </Link>
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2 text-white/60">
-          <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="h-8 w-[1px] bg-white/40"
-          />
+      {/* ── Slide indicators ── */}
+      {images.length > 1 && (
+        <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2.5">
+          {images.map((img, i) => (
+            <span
+              key={img.id}
+              className="block h-[2px] rounded-full transition-all duration-700"
+              style={{
+                width: i === currentIndex ? 32 : 16,
+                backgroundColor:
+                  i === currentIndex
+                    ? "rgba(245, 245, 220, 0.8)"
+                    : "rgba(245, 245, 220, 0.25)",
+              }}
+            />
+          ))}
         </div>
-      </motion.div>
+      )}
     </section>
   );
 }

@@ -24,7 +24,7 @@ const values = [
   {
     title: "Community",
     description:
-      "Our Showroom elevates premium local brands, connecting creators with a global audience.",
+      "Our platform elevates premium local brands, connecting creators with a global audience.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function AboutPage() {
       <div className="relative mt-16 aspect-[21/9] overflow-hidden rounded-2xl">
         <Image
           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&h=700&fit=crop"
-          alt="1990 showroom"
+          alt="1990 luxury space"
           fill
           className="object-cover"
           sizes="100vw"
@@ -76,7 +76,7 @@ export default function AboutPage() {
           Experience the Platform
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-sm opacity-80">
-          Explore official Originals, discover Showroom brands, and shop
+          Explore official Originals, discover partner brands, and shop
           collections curated for those who lead — not follow.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -86,12 +86,12 @@ export default function AboutPage() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
-          <Link href="/showroom">
+          <Link href="/brands">
             <Button
               variant="outline"
               className="rounded-full border-primary-foreground/30 bg-transparent px-8 text-primary-foreground hover:bg-primary-foreground/10"
             >
-              Visit Showroom
+              Explore Brands
             </Button>
           </Link>
         </div>

@@ -16,7 +16,6 @@ import { PageBreadcrumb } from "@/components/shared/page-breadcrumb";
 import { PageTransition } from "@/components/shared/page-transition";
 import { EmptyState } from "@/components/shared/empty-state";
 import { useCartStore } from "@/store/cart-store";
-import { useAuthStore } from "@/store/auth-store";
 import { getProductById } from "@/lib/catalog-utils";
 import { commerceApi } from "@/lib/api-client";
 import { useCatalog } from "@/providers/catalog-provider";
@@ -42,7 +41,6 @@ export default function CheckoutPage() {
   const { products, refresh } = useCatalog();
   const { items, getSubtotal, getShipping, getTax, clearCart, couponDiscount } =
     useCartStore();
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const [step, setStep] = useState<"form" | "confirmation">("form");
   const [shippingMethod, setShippingMethod] = useState("standard");
   const [paymentMethod, setPaymentMethod] = useState("cash");
@@ -84,46 +82,63 @@ export default function CheckoutPage() {
         toast.error("Please upload your InstaPay payment screenshot");
         return;
       }
-      const formData = new FormData();
-      formData.append("customerName", `${data.firstName} ${data.lastName}`);
-      formData.append("email", data.email);
-      formData.append("phone", data.phone);
-      formData.append(
-        "address",
-        `${data.street}, ${data.city}, ${data.state} ${data.zipCode}, ${data.country}`
-      );
-      formData.append("totalPrice", String(total));
-      formData.append("paymentMethod", paymentMethod);
-      formData.append("source", "website");
-      if (paymentScreenshot) {
-        formData.append("screenshot", paymentScreenshot);
-      }
-      formData.append(
-        "items",
-        JSON.stringify(
-          items.map((item) => {
-            const product = getProductById(products, item.productId);
-            return {
-              productId: Number(item.productId),
-              name: product?.name ?? item.name ?? "Product",
-              variant: item.size,
-              size: item.size,
-              quantity: item.quantity,
-              price: item.unitPrice ?? product?.price ?? 0,
-            };
-          })
-        )
-      );
-      const { couponCode } = useCartStore.getState();
-      if (couponCode) formData.append("promoCode", couponCode);
-      if (discount > 0) formData.append("discount", String(discount));
 
-      const result = await commerceApi.createOrder(formData);
+      const { couponCode } = useCartStore.getState();
+      const itemsPayload = items.map((item) => {
+        const product = getProductById(products, item.productId);
+        return {
+          productId: Number(item.productId),
+          name: product?.name ?? item.name ?? "Product",
+          variant: item.size,
+          size: item.size,
+          quantity: item.quantity,
+          price: item.unitPrice ?? product?.price ?? 0,
+        };
+      });
+
+      let result: { message: string; orderId: number };
+
+      if (paymentScreenshot) {
+        const formData = new FormData();
+        formData.append("customerName", `${data.firstName} ${data.lastName}`);
+        formData.append("email", data.email);
+        formData.append("phone", data.phone);
+        formData.append(
+          "address",
+          `${data.street}, ${data.city}, ${data.state} ${data.zipCode}, ${data.country}`
+        );
+        formData.append("totalPrice", String(total));
+        formData.append("paymentMethod", paymentMethod);
+        formData.append("source", "website");
+        formData.append("screenshot", paymentScreenshot);
+        formData.append("items", JSON.stringify(itemsPayload));
+        if (couponCode) formData.append("promoCode", couponCode);
+        if (discount > 0) formData.append("discount", String(discount));
+        result = await commerceApi.createOrder(formData);
+      } else {
+        result = await commerceApi.createOrderJson({
+          customerName: `${data.firstName} ${data.lastName}`,
+          email: data.email,
+          phone: data.phone,
+          address: `${data.street}, ${data.city}, ${data.state} ${data.zipCode}, ${data.country}`,
+          totalPrice: total,
+          paymentMethod,
+          source: "website",
+          items: itemsPayload,
+          promoCode: couponCode || null,
+          discount: discount > 0 ? discount : 0,
+        });
+      }
+
       setOrderNumber(`1990-${result.orderId}`);
       setStep("confirmation");
       clearCart();
-      await refresh();
       toast.success("Order placed successfully!");
+      try {
+        await refresh();
+      } catch (err) {
+        console.warn("Background catalog refresh failed silently:", err);
+      }
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : "Unable to place order"
@@ -151,14 +166,9 @@ export default function CheckoutPage() {
             <p className="mt-4 text-sm text-muted-foreground">
               A confirmation email has been sent to your email address.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <div className="mt-8 flex justify-center">
               <Link href="/shop">
                 <Button className="rounded-full px-8">Continue Shopping</Button>
-              </Link>
-              <Link href="/account/orders">
-                <Button variant="outline" className="rounded-full px-8">
-                  View Orders
-                </Button>
               </Link>
             </div>
           </motion.div>
@@ -366,15 +376,6 @@ export default function CheckoutPage() {
               <Button type="submit" size="lg" className="mt-6 w-full rounded-full">
                 Place Order · {formatPrice(total)}
               </Button>
-
-              {!isAuthenticated && (
-                <p className="mt-4 text-center text-xs text-muted-foreground">
-                  Have an account?{" "}
-                  <Link href="/auth/login" className="text-primary hover:underline">
-                    Sign in
-                  </Link>
-                </p>
-              )}
             </div>
           </div>
         </form>

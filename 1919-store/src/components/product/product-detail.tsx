@@ -36,7 +36,6 @@ import { useCatalog } from "@/providers/catalog-provider";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { catalogApi } from "@/lib/api-client";
-import { useAuthStore } from "@/store/auth-store";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -46,16 +45,13 @@ interface ProductDetailProps {
 
 export function ProductDetail({ product }: ProductDetailProps) {
   const { products, refresh } = useCatalog();
-  const user = useAuthStore((s) => s.user);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name ?? "");
   const [selectedSize, setSelectedSize] = useState(
     product.sizes.find((s) => s.inStock)?.label ?? ""
   );
   const [quantity, setQuantity] = useState(1);
-  const [reviewName, setReviewName] = useState(
-    user ? `${user.firstName} ${user.lastName}`.trim() : ""
-  );
+  const [reviewName, setReviewName] = useState("");
   const [reviewRating, setReviewRating] = useState(5);
   const [reviewComment, setReviewComment] = useState("");
   const [submittingReview, setSubmittingReview] = useState(false);
@@ -171,10 +167,19 @@ export function ProductDetail({ product }: ProductDetailProps) {
           transition={{ duration: 0.5 }}
         >
           <Link
-            href={`/showroom/${product.brandName.toLowerCase().replace(/\s+/g, "-")}`}
-            className="text-xs tracking-wider text-muted-foreground uppercase hover:text-primary"
+            href={`/brands/${product.brandName.toLowerCase().replace(/\s+/g, "-")}`}
+            className="inline-flex items-center gap-2 text-xs tracking-wider text-muted-foreground uppercase hover:text-primary transition-colors font-semibold"
           >
-            {product.brandName}
+            {product.brandLogo && (
+              <Image
+                src={product.brandLogo}
+                alt={product.brandName}
+                width={20}
+                height={20}
+                className="rounded-full object-cover border"
+              />
+            )}
+            <span>{product.brandName}</span>
           </Link>
           <h1 className="mt-2 font-heading text-3xl font-light md:text-4xl">
             {product.name}

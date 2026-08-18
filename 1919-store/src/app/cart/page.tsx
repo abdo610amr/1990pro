@@ -12,15 +12,12 @@ import { EmptyState } from "@/components/shared/empty-state";
 import { useCartStore } from "@/store/cart-store";
 import { getProductById } from "@/lib/catalog-utils";
 import { useCatalog } from "@/providers/catalog-provider";
-import { useAuthStore } from "@/store/auth-store";
 import { formatPrice } from "@/lib/format";
 import { toast } from "sonner";
 import { useState } from "react";
 import { addDays, format } from "date-fns";
-
 export default function CartPage() {
   const { products } = useCatalog();
-  const user = useAuthStore((state) => state.user);
   const {
     items,
     updateQuantity,
@@ -46,7 +43,7 @@ export default function CartPage() {
 
   const handleApplyCoupon = async () => {
     setApplyingCoupon(true);
-    if (await applyCoupon(couponInput, user?.email)) {
+    if (await applyCoupon(couponInput)) {
       toast.success("Coupon applied successfully");
     } else {
       toast.error("Invalid coupon code");

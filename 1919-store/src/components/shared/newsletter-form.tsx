@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 interface NewsletterFormProps {
@@ -12,6 +10,7 @@ interface NewsletterFormProps {
 export function NewsletterForm({ variant = "default" }: NewsletterFormProps) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,56 +20,41 @@ export function NewsletterForm({ variant = "default" }: NewsletterFormProps) {
     }
 
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, 600));
     setLoading(false);
-    setEmail("");
-    toast.success("Welcome to the Originals. You're subscribed.");
+    setSubscribed(true);
+    toast.success("You're on the list. Watch your inbox.");
   };
 
-  if (variant === "inline") {
+  if (subscribed) {
     return (
-      <form
-        onSubmit={handleSubmit}
-        className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
-      >
-        <Input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
-          className="flex-1 rounded-full border-border bg-background"
-        />
-        <Button
-          type="submit"
-          disabled={loading}
-          className="shrink-0 rounded-full px-8"
-        >
-          {loading ? "Subscribing..." : "Subscribe"}
-        </Button>
-      </form>
+      <p className="label mt-6 border-t border-border pt-4 text-primary">
+        You're on the list. Watch your inbox.
+      </p>
     );
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-6 flex flex-col gap-3 sm:flex-row"
+      className="mt-6 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row"
     >
-      <Input
+      <input
         type="email"
+        required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        className="flex-1 border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/50"
+        placeholder="YOUR EMAIL"
+        aria-label="Email address"
+        className="label w-full flex-1 border-b border-input bg-transparent pb-3 text-primary outline-none placeholder:text-wine/40 focus:border-primary"
       />
-      <Button
+      <button
         type="submit"
-        variant="secondary"
         disabled={loading}
-        className="shrink-0 px-8"
+        className="label shrink-0 border border-primary px-7 py-4 text-primary transition-colors duration-500 hover:bg-primary hover:text-primary-foreground disabled:opacity-50"
       >
-        {loading ? "Subscribing..." : "Subscribe"}
-      </Button>
+        {loading ? "Subscribing..." : "Get Notified"}
+      </button>
     </form>
   );
 }

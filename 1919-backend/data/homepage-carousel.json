@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&h=900&fit=crop",
+    "title": "1990 FLAGSHIP STORE",
+    "description": "Luxury fashion destination and editorial showroom.",
+    "link": "/shop",
+    "sort_order": 1,
+    "is_active": true,
+    "created_at": "2026-08-12T12:00:00.000Z",
+    "updated_at": "2026-08-12T12:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "image": "https://images.unsplash.com/photo-1469334031216-e382a71b716b?w=1600&h=900&fit=crop",
+    "title": "EDITORIAL CAMPAIGN",
+    "description": "Crafted for originals who define luxury on their terms.",
+    "link": "/originals",
+    "sort_order": 2,
+    "is_active": true,
+    "created_at": "2026-08-12T12:00:00.000Z",
+    "updated_at": "2026-08-12T12:00:00.000Z"
+  },
+  {
+    "id": "3",
+    "image": "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&h=900&fit=crop",
+    "title": "SHOWROOM INTERIORS",
+    "description": "Minimal aesthetics paired with architectural tailoring.",
+    "link": "/collections",
+    "sort_order": 3,
+    "is_active": true,
+    "created_at": "2026-08-12T12:00:00.000Z",
+    "updated_at": "2026-08-12T12:00:00.000Z"
+  },
+  {
+    "id": "4",
+    "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&h=900&fit=crop",
+    "title": "LIFESTYLE & WEAR",
+    "description": "Timeless luxury silhouettes engineered for daily elegance.",
+    "link": "/shop",
+    "sort_order": 4,
+    "is_active": true,
+    "created_at": "2026-08-12T12:00:00.000Z",
+    "updated_at": "2026-08-13T09:03:07.406Z"
+  }
+]

@@ -2,192 +2,191 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { HeroBanner } from "@/components/home/hero-banner";
 import { ProductCarousel } from "@/components/shared/product-carousel";
-import { ProductCard } from "@/components/shared/product-card";
-import { BrandCard } from "@/components/shared/brand-card";
-import { CategoryCard } from "@/components/shared/category-card";
-import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/shared/reveal";
 import { NewsletterForm } from "@/components/shared/newsletter-form";
+import { useReveal } from "@/hooks/use-reveal";
 import {
   getBestSellers,
   getNewArrivals,
   getTrendingProducts,
-  getProductsByType,
 } from "@/lib/catalog-utils";
 import { useCatalog } from "@/providers/catalog-provider";
+import { cn } from "@/lib/utils";
 
-const instagramImages = [
-  "https://images.unsplash.com/photo-1469334031216-e382a71b716b?w=400&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1483985988355-763728fa4b65?w=400&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=400&fit=crop",
-];
+function ImageReveal({
+  src,
+  alt,
+  className,
+  ratio,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  ratio: string;
+}) {
+  const { ref, visible } = useReveal<HTMLDivElement>(0.15);
+  return (
+    <div ref={ref} className={cn("overflow-hidden bg-secondary border border-border", className)}>
+      <Image
+        src={src}
+        alt={alt}
+        width={1600}
+        height={1000}
+        loading="lazy"
+        className={cn("clip-reveal w-full object-cover", ratio, visible && "is-visible")}
+      />
+    </div>
+  );
+}
 
 export default function HomePage() {
-  const { products, categories, collections, brands } = useCatalog();
+  const { products } = useCatalog();
   const bestSellers = getBestSellers(products);
   const newArrivals = getNewArrivals(products);
-  const trending = getTrendingProducts(products);
-  const originals = getProductsByType(products, "originals").slice(0, 4);
-  const featuredBrands = brands.filter((brand) => brand.featured);
 
   return (
-    <>
+    <div id="top" className="min-h-screen bg-background font-body text-primary">
+      {/* 1. HERO BANNER (with background slideshow) */}
       <HeroBanner />
 
-      <ProductCarousel
-        products={bestSellers}
-        title="Best Sellers"
-        subtitle="Most Loved"
-      />
-
-      <section className="luxury-section bg-secondary/30">
-        <div className="luxury-container">
-          <div className="mb-10 text-center">
-            <p className="luxury-subheading">Curated Edit</p>
-            <h2 className="luxury-heading mt-2">Featured Collections</h2>
+      {/* 2. BRAND STATEMENT */}
+      <section className="px-6 py-32 md:px-12 md:py-48">
+        <div className="mx-auto grid max-w-[1500px] gap-16 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <Reveal>
+              <h2 className="display text-[clamp(2rem,5.4vw,4.75rem)] uppercase text-primary">
+                Not made for
+                <br />
+                everyone.
+                <br />
+                <span className="text-wine">Made for originals.</span>
+              </h2>
+            </Reveal>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {collections.slice(0, 2).map((collection) => (
-              <Link
-                key={collection.id}
-                href={`/collections/${collection.slug}`}
-                className="group relative aspect-[16/9] overflow-hidden rounded-2xl"
-              >
-                <Image
-                  src={collection.image}
-                  alt={collection.name}
-                  fill
-                  className="image-zoom object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <div className="absolute right-6 bottom-6 left-6">
-                  <h3 className="font-heading text-2xl font-light text-white md:text-3xl">
-                    {collection.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-white/70 line-clamp-2">
-                    {collection.description}
-                  </p>
-                  <span className="mt-4 inline-flex items-center text-sm text-white group-hover:underline">
-                    Explore Collection
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
-            ))}
+          <div className="md:col-span-4 md:pt-4">
+            <Reveal delay={180}>
+              <p className="max-w-sm text-base leading-relaxed text-wine/80">
+                1990 is built for individuality, authenticity and timeless pieces. A modern
+                streetwear identity inspired by those who choose their own direction.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="mt-10 h-px w-full bg-border" />
+              <p className="label mt-6 text-wine/60">Originals only — since 2026</p>
+            </Reveal>
           </div>
         </div>
       </section>
 
+      {/* 3. NEW ARRIVALS */}
       <ProductCarousel
+        id="new-arrivals"
         products={newArrivals}
         title="New Arrivals"
         subtitle="Just Dropped"
+        note="Four pieces. One direction."
       />
 
-      <section className="luxury-section">
-        <div className="luxury-container">
-          <div className="mb-10 flex items-end justify-between">
-            <div>
-              <p className="luxury-subheading">Official</p>
-              <h2 className="luxury-heading mt-2">1990 Originals</h2>
-            </div>
-            <Link href="/originals">
-              <Button variant="outline" className="rounded-full">
-                View All
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-            {originals.map((product, i) => (
-              <ProductCard key={product.id} product={product} priority={i < 2} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="luxury-section bg-secondary/30">
-        <div className="luxury-container">
-          <div className="mb-10 text-center">
-            <p className="luxury-subheading">Showroom</p>
-            <h2 className="luxury-heading mt-2">Featured Local Brands</h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featuredBrands.map((brand) => (
-              <BrandCard key={brand.id} brand={brand} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="luxury-section">
-        <div className="luxury-container">
-          <div className="mb-10 text-center">
-            <p className="luxury-subheading">Browse</p>
-            <h2 className="luxury-heading mt-2">Shop by Category</h2>
-          </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6 md:gap-6">
-            {categories.map((category) => (
-              <CategoryCard key={category.id} category={category} />
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* 4. BEST SELLERS */}
       <ProductCarousel
-        products={trending}
-        title="Trending Now"
-        subtitle="Hot Right Now"
+        id="best-sellers"
+        products={bestSellers}
+        title="Best Sellers"
+        subtitle="Best Sellers"
+        note="The ones you keep coming back to."
+        actionHref="/shop"
+        actionLabel="Go to Shop"
       />
 
-      <section className="luxury-section">
-        <div className="luxury-container">
-          <div className="rounded-2xl bg-primary px-8 py-16 text-center text-primary-foreground md:px-16">
-            <p className="text-sm uppercase tracking-[0.2em] opacity-80">
-              Newsletter
-            </p>
-            <h2 className="mt-3 font-heading text-3xl font-light md:text-4xl">
-              Join the Originals
+      {/* 5. VISUAL STATEMENT / CAMPAIGN BANNER */}
+      <section className="relative px-6 pb-32 md:px-12 md:pb-40">
+        <div className="mx-auto max-w-[1500px]">
+          <ImageReveal
+            src="https://images.unsplash.com/photo-1469334031216-e382a71b716b?w=1600&h=900&fit=crop"
+            alt="1990 Campaign Statement"
+            ratio="aspect-[16/10] md:aspect-[16/8]"
+          />
+          <Reveal>
+            <h2 className="display mt-10 text-[clamp(2.25rem,8vw,7rem)] uppercase text-primary">
+              Wear your original.
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-sm opacity-80">
-              Be first to know about new drops, exclusive collections, and
-              member-only access.
-            </p>
-            <NewsletterForm variant="inline" />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 6. COMING SOON & NEWSLETTER */}
+      <section id="coming-soon" className="scroll-mt-24 px-6 pb-32 md:px-12 md:pb-40">
+        <div className="mx-auto grid max-w-[1500px] items-end gap-14 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <ImageReveal
+              src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1000&h=1200&fit=crop"
+              alt="Next 1990 Drop Teaser"
+              ratio="aspect-[4/5] md:aspect-[4/4.4]"
+            />
+          </div>
+          <div className="md:col-span-5 md:pb-6">
+            <Reveal>
+              <span className="label text-wine/70">New Drop</span>
+            </Reveal>
+            <Reveal delay={220}>
+              <h2 className="display mt-5 text-[clamp(2.75rem,7vw,6rem)] uppercase text-primary">
+                Coming
+                <br />
+                Soon
+              </h2>
+            </Reveal>
+            <Reveal delay={460}>
+              <p className="label mt-8 text-wine/70">A new chapter is on the way.</p>
+            </Reveal>
+            <Reveal delay={640}>
+              <NewsletterForm variant="inline" />
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="luxury-section bg-secondary/30">
-        <div className="luxury-container">
-          <div className="mb-10 text-center">
-            <p className="luxury-subheading">@1990official</p>
-            <h2 className="luxury-heading mt-2">Follow Our Journey</h2>
-          </div>
-          <div className="grid grid-cols-3 gap-2 md:grid-cols-6 md:gap-4">
-            {instagramImages.map((img, i) => (
-              <div
-                key={i}
-                className="group relative aspect-square overflow-hidden rounded-xl"
-              >
-                <Image
-                  src={img}
-                  alt={`Instagram post ${i + 1}`}
-                  fill
-                  className="image-zoom object-cover"
-                  sizes="(max-width: 768px) 33vw, 16vw"
-                />
+      {/* 7. BRAND VALUES */}
+      <section className="px-6 pb-32 md:px-12 md:pb-40">
+        <div className="mx-auto grid max-w-[1500px] gap-12 border-t border-border pt-14 md:grid-cols-3 md:gap-16">
+          {[
+            ["01", "Originality", "Designed for people who don't follow the crowd."],
+            ["02", "Quality", "Thoughtful pieces made to become everyday essentials."],
+            ["03", "Identity", "Your style. Your story. Your rules."],
+          ].map(([n, title, copy], i) => (
+            <Reveal key={n} delay={i * 160}>
+              <div className="md:border-l md:border-border md:pl-8 md:first:border-l-0 md:first:pl-0">
+                <span className="label text-wine/60">{n}</span>
+                <h3 className="display mt-4 text-3xl uppercase text-primary md:text-4xl">{title}</h3>
+                <p className="mt-4 max-w-xs text-sm leading-relaxed text-wine/75">{copy}</p>
               </div>
-            ))}
-          </div>
+            </Reveal>
+          ))}
         </div>
       </section>
-    </>
+
+      {/* 8. FINAL CTA */}
+      <section id="final" className="grain scroll-mt-24 bg-primary px-6 py-36 md:px-12 md:py-52">
+        <div className="mx-auto max-w-[1500px] text-center">
+          <Reveal>
+            <h2 className="display text-[clamp(3.5rem,14vw,11rem)] uppercase text-primary-foreground">
+              Be original.
+            </h2>
+          </Reveal>
+          <Reveal delay={180}>
+            <p className="label mt-8 text-primary-foreground/70">Discover the 1990 collection.</p>
+          </Reveal>
+          <Reveal delay={340}>
+            <Link
+              href="/shop"
+              className="label mt-14 inline-block border border-primary-foreground px-10 py-4 text-primary-foreground transition-colors duration-500 hover:bg-primary-foreground hover:text-primary"
+            >
+              Shop 1990
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+    </div>
   );
 }

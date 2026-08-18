@@ -117,7 +117,7 @@ export function SearchContent() {
                   {results.brands.map((brand) => (
                     <Link
                       key={brand.id}
-                      href={`/showroom/${brand.slug}`}
+                      href={`/brands/${brand.slug}`}
                       className="flex items-center gap-4 rounded-2xl border p-4 transition-shadow hover:shadow-md"
                     >
                       <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full">

@@ -13,7 +13,12 @@ export interface BackendProduct {
   gallery: string[];
   categoryId: number | null;
   brandId?: number;
-  productType?: "originals" | "showroom";
+  brand_id?: number;
+  brandName?: string;
+  brand_name?: string;
+  brandLogo?: string;
+  barcode?: string;
+  productType?: string;
   variantType: string;
   variantLabel: string;
   variants: BackendVariant[];

@@ -76,7 +76,7 @@ export function StorePopup() {
   return (
     <>
       <div
-        className="fixed inset-0 z-[60] bg-foreground/50 backdrop-blur-sm"
+        className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-md"
         onClick={handleClose}
         aria-hidden
       />
@@ -86,18 +86,18 @@ export function StorePopup() {
         aria-modal="true"
         aria-labelledby="store-popup-title"
       >
-        <div className="relative w-full max-w-md rounded-2xl border border-border bg-background p-6 shadow-2xl">
+        <div className="relative w-full max-w-md border border-border bg-background p-8 shadow-2xl">
           <button
             type="button"
             onClick={handleClose}
-            className="absolute right-4 top-4 rounded-lg p-1.5 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+            className="absolute right-4 top-4 p-2 text-primary transition hover:opacity-70"
             aria-label="Close popup"
           >
             <X className="h-5 w-5" />
           </button>
 
           {imageSrc && (
-            <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-xl">
+            <div className="relative mb-6 aspect-video w-full overflow-hidden border border-border">
               <Image
                 src={imageSrc}
                 alt=""
@@ -109,13 +109,13 @@ export function StorePopup() {
           )}
 
           {config.title && (
-            <h2 id="store-popup-title" className="font-heading text-2xl">
+            <h2 id="store-popup-title" className="display text-2xl uppercase text-primary">
               {config.title}
             </h2>
           )}
 
           {config.description && (
-            <p className="mt-2 text-sm text-muted-foreground">{config.description}</p>
+            <p className="mt-3 text-sm text-wine/80 leading-relaxed">{config.description}</p>
           )}
 
           {config.buttonText && config.buttonUrl ? (
@@ -125,7 +125,7 @@ export function StorePopup() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleClose}
-                className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                className="label mt-6 inline-flex w-full items-center justify-center border border-primary px-6 py-4 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {config.buttonText}
               </a>
@@ -133,7 +133,7 @@ export function StorePopup() {
               <Link
                 href={config.buttonUrl}
                 onClick={handleClose}
-                className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                className="label mt-6 inline-flex w-full items-center justify-center border border-primary px-6 py-4 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {config.buttonText}
               </Link>

@@ -225,7 +225,7 @@ export const products: Product[] = [
     category: "outerwear",
     brandId: "brand-maison-noir",
     brandName: "Maison Noir",
-    type: "showroom",
+    type: "brand",
     colors: [{ name: "Black", hex: "#1E1E1E" }],
     sizes: defaultSizes,
     fabric: "100% Cotton Velvet",
@@ -253,7 +253,7 @@ export const products: Product[] = [
     category: "knitwear",
     brandId: "brand-maison-noir",
     brandName: "Maison Noir",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Black", hex: "#1E1E1E" },
       { name: "Ivory", hex: "#FFFFF0" },
@@ -286,7 +286,7 @@ export const products: Product[] = [
     collection: "street-luxe",
     brandId: "brand-velvet-arc",
     brandName: "Velvet Arc",
-    type: "showroom",
+    type: "brand",
     colors: [{ name: "Indigo", hex: "#3F5277" }],
     sizes: defaultSizes,
     fabric: "100% Japanese Selvedge Denim, 14oz",
@@ -315,7 +315,7 @@ export const products: Product[] = [
     collection: "autumn-winter-2026",
     brandId: "brand-velvet-arc",
     brandName: "Velvet Arc",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Camel", hex: "#C19A6B" },
       { name: "Grey", hex: "#808080" },
@@ -348,7 +348,7 @@ export const products: Product[] = [
     collection: "essentials",
     brandId: "brand-urban-atelier",
     brandName: "Urban Atelier",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "White", hex: "#FFFFFF" },
       { name: "Light Blue", hex: "#ADD8E6" },
@@ -381,7 +381,7 @@ export const products: Product[] = [
     collection: "street-luxe",
     brandId: "brand-silk-republic",
     brandName: "Silk Republic",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Champagne", hex: "#F7E7CE" },
       { name: "Black", hex: "#1E1E1E" },
@@ -452,7 +452,7 @@ export const products: Product[] = [
     collection: "essentials",
     brandId: "brand-iron-garden",
     brandName: "Iron Garden",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Olive", hex: "#808000" },
       { name: "Navy", hex: "#000080" },
@@ -516,7 +516,7 @@ export const products: Product[] = [
     collection: "street-luxe",
     brandId: "brand-urban-atelier",
     brandName: "Urban Atelier",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Tan", hex: "#D2B48C" },
       { name: "Black", hex: "#1E1E1E" },
@@ -548,7 +548,7 @@ export const products: Product[] = [
     collection: "minimal-edit",
     brandId: "brand-silk-republic",
     brandName: "Silk Republic",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Natural", hex: "#F5F5DC" },
       { name: "Black", hex: "#1E1E1E" },
@@ -612,7 +612,7 @@ export const products: Product[] = [
     collection: "minimal-edit",
     brandId: "brand-maison-noir",
     brandName: "Maison Noir",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Sand", hex: "#C2B280" },
       { name: "Black", hex: "#1E1E1E" },
@@ -650,7 +650,7 @@ export const products: Product[] = [
     collection: "minimal-edit",
     brandId: "brand-velvet-arc",
     brandName: "Velvet Arc",
-    type: "showroom",
+    type: "brand",
     colors: [
       { name: "Olive", hex: "#808000" },
       { name: "Navy", hex: "#000080" },
@@ -682,7 +682,7 @@ export function getProductsByBrand(brandId: string): Product[] {
   return products.filter((p) => p.brandId === brandId);
 }
 
-export function getProductsByType(type: "originals" | "showroom"): Product[] {
+export function getProductsByType(type: "originals" | "brand"): Product[] {
   return products.filter((p) => p.type === type);
 }
 

@@ -1,4 +1,4 @@
-export type ProductType = "originals" | "showroom";
+export type ProductType = "originals" | "brand";
 
 export type SortOption =
   | "newest"
@@ -44,6 +44,7 @@ export interface Product {
   collection?: string;
   brandId: string;
   brandName: string;
+  brandLogo?: string;
   type: ProductType;
   colors: ProductColor[];
   sizes: ProductSize[];
@@ -68,6 +69,11 @@ export interface Brand {
   coverImage: string;
   story: string;
   about: string;
+  description?: string;
+  barcodePrefix?: string;
+  commissionPercentage?: number;
+  status?: string;
+  productCount?: number;
   categories: string[];
   followers: number;
   rating: number;

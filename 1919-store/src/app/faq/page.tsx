@@ -38,11 +38,11 @@ const faqSections = [
       },
       {
         q: "How do I start a return?",
-        a: "Visit your account orders page and select 'Return Item', or email hello@1990.com with your order number.",
+        a: "Email hello@1990.com with your order number and items you wish to return.",
       },
       {
-        q: "Are Showroom brand items returnable?",
-        a: "Yes. All Showroom products follow the same 30-day return policy as 1990 Originals.",
+        q: "Are partner brand items returnable?",
+        a: "Yes. All partner brand products follow the same 30-day return policy as 1990 Originals.",
       },
     ],
   },
@@ -50,8 +50,8 @@ const faqSections = [
     title: "Products & Sizing",
     items: [
       {
-        q: "What's the difference between Originals and Showroom?",
-        a: "Originals are official 1990 products designed in-house. Showroom features curated premium local brands, each with their own storefront on our platform.",
+        q: "What's the difference between Originals and Partner Brands?",
+        a: "Originals are official 1990 products designed in-house. Partner Brands are curated premium local brands, each with their own dedicated brand page on our platform.",
       },
       {
         q: "How do I find my size?",

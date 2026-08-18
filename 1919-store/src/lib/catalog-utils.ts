@@ -14,7 +14,7 @@ export function getProductsByBrand(products: Product[], brandId: string) {
 
 export function getProductsByType(
   products: Product[],
-  type: "originals" | "showroom"
+  type: "originals" | "brand"
 ) {
   return products.filter((product) => product.type === type);
 }
